@@ -1,10 +1,9 @@
 from pathlib import Path
 from re import compile as re_compile, findall
-from typing import Literal, Optional, TYPE_CHECKING, Union
+from typing import Optional, TYPE_CHECKING
 
 from pydantic import FilePath
 
-from app.schemas.base import BetterColor
 from app.schemas.card_type import BaseCardTypeCustomFontAllText
 from modules.BaseCardType import (
     BaseCardType, ImageMagickCommands, CardDescription
@@ -49,8 +48,9 @@ class TitleColorMatch(BaseCardType):
 
     class CardModel(BaseCardTypeCustomFontAllText):
         logo_file: FilePath
-        font_color: Union[BetterColor, Literal['auto']] = '#EBEBEB'
+        font_color: str = '#EBEBEB'
         font_file: FilePath
+        omit_gradient: bool = False
 
     """Directory where all reference files used by this card are stored"""
     REF_DIRECTORY = Path(__file__).parent.parent / 'ref'
@@ -92,7 +92,7 @@ class TitleColorMatch(BaseCardType):
         'source_file', 'output_file', 'title_text', 'season_text',
         'episode_text', 'hide_season_text', 'hide_episode_text', 'font_color',
         'font_file', 'font_interline_spacing', 'font_kerning', 'font_size',
-        'font_stroke_width', 'font_vertical_shift', 'logo', 
+        'font_stroke_width', 'font_vertical_shift', 'logo', 'omit_gradient',
     )
 
     def __init__(self,
@@ -113,12 +113,11 @@ class TitleColorMatch(BaseCardType):
             font_vertical_shift: int = 0,
             blur: bool = False,
             grayscale: bool = False,
+            omit_gradient: bool = False,
             preferences: Optional['Preferences'] = None,
             **unused,
         ) -> None:
-        """
-        Construct a new instance of this Card.
-        """
+        """Construct a new instance of this Card."""
         
         # Initialize the parent class - this sets up an ImageMagickInterface
         super().__init__(blur, grayscale, preferences=preferences)
@@ -141,6 +140,22 @@ class TitleColorMatch(BaseCardType):
         self.font_size = font_size
         self.font_stroke_width = font_stroke_width
         self.font_vertical_shift = font_vertical_shift
+
+        # Extras
+        self.omit_gradient = omit_gradient
+
+
+    @property
+    def gradient_command(self) -> ImageMagickCommands:
+        """Subcommands to add the gradient to the image."""
+
+        if self.omit_gradient:
+            return []
+
+        return [
+            f'"{self.__GRADIENT_IMAGE}"',
+            f'-composite',
+        ]
 
 
     @property
@@ -390,9 +405,7 @@ class TitleColorMatch(BaseCardType):
             # Resize source image
             f'"{self.source_file.resolve()}"',
             *self.resize_and_style,
-            # Overlay gradient
-            f'"{self.__GRADIENT_IMAGE}"',
-            f'-composite',
+            *self.gradient_command,
             # Overlay resized logo
             *self.logo_command,
             # Put title text
