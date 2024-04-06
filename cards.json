@@ -5,11 +5,23 @@
         "description": [
             "A modification of GradientLogoTitleCard that includes the option to auto-select font color based on logo color.",
             "This card will also automatically crop off extraneous transparent space from around the logo."
-        ], "example": "https://user-images.githubusercontent.com/7379812/187586521-353ba09f-30a8-424b-bbf3-ee9036c9e638.jpg",
-        "creators": ["Azuravian", "Beedman", "CollinHeist"],
+        ],
+        "example": "https://user-images.githubusercontent.com/7379812/187586521-353ba09f-30a8-424b-bbf3-ee9036c9e638.jpg",
+        "creators": [
+            "Azuravian",
+            "Beedman",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": true,
-        "supported_extras": [],
+        "supported_extras": [
+            {
+                "name": "Gradient Omission",
+                "identifier": "omit_gradient",
+                "description": "Whether to omit the gradient overlay",
+                "tooltip": "Either <v>True</v> or <v>False</v>. Default is <v>False</v>."
+            }
+        ],
         "hash": "fa0d18e9e33745314936aa506d7b623b"
     },
     {
@@ -18,7 +30,8 @@
         "description": [
             "A multi-overlay card designed to look like a heads up display.",
             "Intended for use in Science Fiction series."
-        ], "example": "https://raw.githubusercontent.com/azuravian/myimages/main/SciFiTitleCard/Example1.jpg",
+        ],
+        "example": "https://raw.githubusercontent.com/azuravian/myimages/main/SciFiTitleCard/Example1.jpg",
         "creators": ["Azuravian"],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
@@ -103,7 +116,8 @@
             "Title Card intended for the 'The Blacklist' television series",
             "This Card features a prominent title and a customizable 'blacklist number' beneath the title.",
             "The default Font for this card is a modified version of Helvetica."
-        ], "example": "https://user-images.githubusercontent.com/17693271/216839561-ec4a1c27-dcdc-4869-87dd-8d592a26aee2.jpg",
+        ],
+        "example": "https://user-images.githubusercontent.com/17693271/216839561-ec4a1c27-dcdc-4869-87dd-8d592a26aee2.jpg",
         "creators": ["CollinHeist"],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
@@ -115,7 +129,8 @@
         "identifier": "lyonza/WhiteTextBroadcast",
         "description": [
             "Card based on Wdvh's White Text Absolute card, using the same format, but has the season number included in the episode text."
-        ], "example": "https://user-images.githubusercontent.com/1803189/171089736-f60a6ff2-0914-432a-a45d-145323d39c42.jpg",
+        ],
+        "example": "https://user-images.githubusercontent.com/1803189/171089736-f60a6ff2-0914-432a-a45d-145323d39c42.jpg",
         "creators": ["lyonza", "Wdvh", "CollinHeist"],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
@@ -128,7 +143,8 @@
         "description": [
             "A variation of the standard Star Wars Card for Shows like Obi-Wan Kenobi that use Part/Chapter and similar as episode titles.",
             "This card also uses a modified star gradient so that more of the left side of the image is visible."
-        ], "example": "https://user-images.githubusercontent.com/17693271/178131539-c7b55ced-b9ba-4564-8153-a998454e1742.jpg",
+        ],
+        "example": "https://user-images.githubusercontent.com/17693271/178131539-c7b55ced-b9ba-4564-8153-a998454e1742.jpg",
         "creators": ["Wdvh", "CollinHeist"],
         "supports_custom_fonts": false,
         "supports_custom_seasons": false,
@@ -141,7 +157,8 @@
         "description": [
             "Modification of the Standard card type that uses the same fonts and sizes but hides the season text and has the episode count positioned in the left top corner.",
             "The title text is positioned even lower than the Standard card."
-        ], "example": "https://user-images.githubusercontent.com/17693271/169709482-6bb023ab-4986-464e-88d6-0e05ad75d0d3.jpg",
+        ],
+        "example": "https://user-images.githubusercontent.com/17693271/169709482-6bb023ab-4986-464e-88d6-0e05ad75d0d3.jpg",
         "creators": ["Wdvh", "CollinHeist"],
         "supports_custom_fonts": false,
         "supports_custom_seasons": false,
@@ -153,7 +170,10 @@
         "identifier": "Wdvh/WhiteTextAbsoluteLogo",
         "description": ["Placeholder description"],
         "example": "https://user-images.githubusercontent.com/17693271/178131676-300601a4-bbdb-46ee-8f78-aa859d13d50c.jpg",
-        "creators": ["Wdvh", "CollinHeist"],
+        "creators": [
+            "Wdvh",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
         "supported_extras": [
@@ -171,8 +191,12 @@
         "description": [
             "Modification of the Standard Card Type.",
             "This Card uses a different font, smaller text size, and the episode title is positioned lower than the Standard Card Type."
-        ],"example": "https://user-images.githubusercontent.com/17693271/169709359-ffc9e109-b327-44e9-b78a-7276f77fe917.jpg",
-        "creators": ["Wdvh", "CollinHeist"],
+        ],
+        "example": "https://user-images.githubusercontent.com/17693271/169709359-ffc9e109-b327-44e9-b78a-7276f77fe917.jpg",
+        "creators": [
+            "Wdvh",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
         "supported_extras": [
@@ -189,7 +213,10 @@
         "identifier": "Wdvh/WhiteTextStandardLogo",
         "description": ["Placeholder description"],
         "example": "https://user-images.githubusercontent.com/17693271/178131565-5351dd98-201e-4f70-a8ff-2311687ed981.jpg",
-        "creators": ["Wdvh", "CollinHeist"],
+        "creators": [
+            "Wdvh",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": true,
         "supported_extras": [
@@ -211,7 +238,10 @@
         "identifier": "Wdvh/WhiteTextTitleOnly",
         "description": ["Placeholder description"],
         "example": "https://user-images.githubusercontent.com/17693271/178131552-4ca8cb30-067e-4e04-9d68-472a8f384345.jpg",
-        "creators": ["Wdvh", "CollinHeist"],
+        "creators": [
+            "Wdvh",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
         "supported_extras": [],
@@ -222,7 +252,10 @@
         "identifier": "Wdvh/WhiteTextTitleOnlyLogo",
         "description": ["Placeholder description"],
         "example": "https://user-images.githubusercontent.com/17693271/178131633-23a312ac-4e5f-4d1a-87cb-60b865a51fe7.jpg",
-        "creators": ["Wdvh", "CollinHeist"],
+        "creators": [
+            "Wdvh",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
         "supported_extras": [
@@ -242,7 +275,10 @@
             "The 'Play' button can be set to 'Rewind' and the image greyscaled when the item has been played."
         ],
         "example": "https://camo.githubusercontent.com/bb6308801194ee20a369080a2d1830c19a63685fab304aa814f0faa1dded2caf/68747470733a2f2f692e6962622e636f2f30746e4a4a36502f537472616e6765722d5468696e67732d323031362d5330332d4530322e6a7067",
-        "creators": ["Yozora", "CollinHeist"],
+        "creators": [
+            "Yozora",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
         "supported_extras": [
@@ -268,7 +304,10 @@
             "Card type closely following the Standard Title Card but with slimmed down margins to save space."
         ],
         "example": "https://camo.githubusercontent.com/8eb09f530888a23bc9279f26fff0d6ee0ea82f998137560f24f042bb9a0e4639/68747470733a2f2f63646e2e646973636f72646170702e636f6d2f6174746163686d656e74732f3937353130383033333533313231393937392f3937373631343933373435373330333630322f5330314530342e6a7067",
-        "creators": ["Yozora", "CollinHeist"],
+        "creators": [
+            "Yozora",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": true,
         "supported_extras": [
