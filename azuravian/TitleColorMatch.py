@@ -396,10 +396,7 @@ class TitleColorMatch(BaseCardType):
 
 
     def create(self) -> None:
-        """
-        Make the necessary ImageMagick and system calls to create this
-        object's defined title card.
-        """
+        """Create this object's defined title card."""
 
         command = ' '.join([
             f'convert',
@@ -413,6 +410,8 @@ class TitleColorMatch(BaseCardType):
             *self.title_text_command,
             # Put season/episode text
             *self.index_text_command,
+            # Attempt to overlay mask
+            *self.add_overlay_mask(self.source_file),
             # Create and resize output
             *self.resize_output,
             f'"{self.output_file.resolve()}"',
