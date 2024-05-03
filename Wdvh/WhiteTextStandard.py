@@ -2,7 +2,6 @@ from pathlib import Path
 from typing import Optional, TYPE_CHECKING
 
 from pydantic import FilePath
-from app.schemas.base import BetterColor
 from app.schemas.card_type import BaseCardTypeCustomFontAllText
 
 from modules.BaseCardType import (
@@ -38,7 +37,7 @@ class WhiteTextStandard(BaseCardType):
     )
 
     class CardModel(BaseCardTypeCustomFontAllText):
-        font_color: BetterColor = '#FFFFFF'
+        font_color: str = '#FFFFFF'
         font_file: FilePath
         separator: str = '•'
 
