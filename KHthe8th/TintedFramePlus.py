@@ -37,8 +37,12 @@ class TintedFramePlus(BaseCardType):
         supports_custom_seasons=True,
         supported_extras=[],
         description=[
-            'A multi-overlay card designed to look like a heads up display.',
-            'Intended for use in Science Fiction series.',
+            'A combination of the TintedFrameTitleCard and the Standard for '
+            'the best of both worlds.', 'It has many of the same extras you '
+            'can pass to tinted frame, but it adds the episode title text '
+            'above the bottom frame element (this is not modifiable). The top '
+            'element will default to logo now, and title is no longer an '
+            'option (as it is always shown above the bottom element).',
         ]
     )
 
