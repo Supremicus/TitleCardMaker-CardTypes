@@ -1,7 +1,7 @@
 from pathlib import Path
 from typing import Literal, Optional, TYPE_CHECKING
 
-from pydantic import root_validator
+from pydantic import constr, root_validator
 
 from app.schemas.card_type import BaseCardTypeCustomFontNoText
 from modules.BaseCardType import (
@@ -48,7 +48,7 @@ class RetroTitleCard(BaseCardType):
 
     class CardModel(BaseCardTypeCustomFontNoText):
         title_text: str
-        episode_text: str
+        episode_text: constr(to_upper=True)
         hide_episode_text: bool = False
         watched: bool = True
         override_bw: Optional[OverrideBw] = None
@@ -123,7 +123,7 @@ class RetroTitleCard(BaseCardType):
             preferences: Optional['Preferences'] = None,
             **unused,
         ) -> None:
-        
+
         # Initialize the parent class - this sets up an ImageMagickInterface
         super().__init__(blur, grayscale, preferences=preferences)
 
@@ -132,7 +132,7 @@ class RetroTitleCard(BaseCardType):
 
         # Ensure characters that need to be escaped are
         self.title_text = self.image_magick.escape_chars(title_text)
-        self.episode_text = self.image_magick.escape_chars(episode_text.upper())
+        self.episode_text = self.image_magick.escape_chars(episode_text)
         self.hide_episode_text = hide_episode_text
 
         self.font_color = font_color
@@ -142,7 +142,7 @@ class RetroTitleCard(BaseCardType):
         self.font_size = font_size
         self.font_stroke_width = font_stroke_width
         self.font_vertical_shift = font_vertical_shift
-        
+
         # Store extras
         self.watched = watched
         self.override_bw = override_bw
@@ -274,10 +274,7 @@ class RetroTitleCard(BaseCardType):
 
 
     def create(self) -> None:
-        """
-        Make the necessary ImageMagick and system calls to create this
-        object's defined title card.
-        """
+        """Create this object's defined title card."""
 
         command = ' '.join([
             f'convert "{self.source_file.resolve()}"',
@@ -285,6 +282,8 @@ class RetroTitleCard(BaseCardType):
             *self.add_gradient_commands,
             *self.title_text_commands,
             *self.index_text_commands,
+            # Attempt to overlay mask
+            *self.add_overlay_mask(self.source_file),
             *self.resize_output,
             f'"{self.output_file.resolve()}"',
         ])
