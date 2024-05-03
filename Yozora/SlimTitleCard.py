@@ -17,8 +17,8 @@ if TYPE_CHECKING:
 
 class SlimTitleCard(BaseCardType):
     """
-    Card type closely following the Standard Title Card but with slimmed down
-    margins to save space.
+    Card type closely following the Standard Title Card but with slimmed
+    down margins to save space.
     """
 
     API_DETAILS = CardDescription(
@@ -116,8 +116,8 @@ class SlimTitleCard(BaseCardType):
 
         # Ensure characters that need to be escaped are
         self.title_text = self.image_magick.escape_chars(title_text)
-        self.season_text = self.image_magick.escape_chars(season_text.upper())
-        self.episode_text = self.image_magick.escape_chars(episode_text.upper())
+        self.season_text = self.image_magick.escape_chars(season_text)
+        self.episode_text = self.image_magick.escape_chars(episode_text)
         self.hide_season_text = hide_season_text
         self.hide_episode_text = hide_episode_text
 
@@ -137,8 +137,9 @@ class SlimTitleCard(BaseCardType):
     @property
     def __title_text_global_effects(self) -> ImageMagickCommands:
         """
-        ImageMagick commands to implement the title text's global effects.
-        Specifically the the font, kerning, fontsize, and center gravity.
+        ImageMagick commands to implement the title text's global
+        effects. Specifically the the font, kerning, fontsize, and
+        center gravity.
         """
 
         font_size = 157.41 * self.font_size
@@ -197,14 +198,9 @@ class SlimTitleCard(BaseCardType):
         ]
 
 
+    @property
     def __series_count_text_effects(self) -> ImageMagickCommands:
-        """
-        ImageMagick commands for adding the necessary text effects to the series
-        count text.
-        
-        Returns:
-            List of ImageMagick commands.
-        """
+        """Necessary text effects to the series count text."""
 
         return [
             f'-fill "{self.SERIES_COUNT_TEXT_COLOR}"',
@@ -215,12 +211,7 @@ class SlimTitleCard(BaseCardType):
 
     @property
     def title_text_command(self) -> ImageMagickCommands:
-        """
-        Subcommand for adding title text to the source image.
-
-        Returns:
-            List of ImageMagick commands.
-        """
+        """Add title text to the source image."""
 
         vertical_shift = 100 + self.font_vertical_shift
 
@@ -235,12 +226,7 @@ class SlimTitleCard(BaseCardType):
 
     @property
     def index_text_command(self) -> ImageMagickCommands:
-        """
-        Subcommand for adding the index text to the source image.
-
-        Returns:
-            List of ImageMagick commands.
-        """
+        """Subcommand for adding the index text to the source image."""
 
         if self.hide_season_text and self.hide_episode_text:
             return []
@@ -252,7 +238,7 @@ class SlimTitleCard(BaseCardType):
                 f'-gravity center',
                 *self.__series_count_text_black_stroke,
                 f'-annotate +0+697.2 "{self.episode_text}"',
-                *self.__series_count_text_effects(),
+                *self.__series_count_text_effects,
                 f'-annotate +0+697.2 "{self.episode_text}"',
             ]
         
@@ -263,7 +249,7 @@ class SlimTitleCard(BaseCardType):
                 f'-gravity center',
                 *self.__series_count_text_black_stroke,
                 f'-annotate +0+697.2 "{self.season_text}"',
-                *self.__series_count_text_effects(),
+                *self.__series_count_text_effects,
                 f'-annotate +0+697.2 "{self.season_text}"',
             ]
 
@@ -285,7 +271,7 @@ class SlimTitleCard(BaseCardType):
 
             f'\(',
             *self.__series_count_text_global_effects,
-            *self.__series_count_text_effects(),
+            *self.__series_count_text_effects,
             f'-font "{self.SEASON_COUNT_FONT}"',
             f'label:"{self.season_text}"',
             f'label:"• "',
@@ -345,10 +331,7 @@ class SlimTitleCard(BaseCardType):
 
 
     def create(self) -> None:
-        """
-        Make the necessary ImageMagick and system calls to create this
-        object's defined title card.
-        """
+        """Create this object's defined title card."""
 
         if self.omit_gradient:
             gradient_command = []
@@ -366,6 +349,8 @@ class SlimTitleCard(BaseCardType):
             # Add title and index text
             *self.title_text_command,
             *self.index_text_command,
+            # Attempt to overlay mask
+            *self.add_overlay_mask(self.source_file),
             # Create card
             *self.resize_output,
             f'"{self.output_file.resolve()}"',
