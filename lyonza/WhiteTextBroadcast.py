@@ -1,11 +1,11 @@
 from pathlib import Path
-from typing import Optional, TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
-from pydantic import Field, root_validator
+from pydantic import root_validator
 from app.schemas.card_type import BaseCardTypeCustomFontNoText
 
 from modules.BaseCardType import (
-    BaseCardType, ImageMagickCommands, Extra, CardDescription
+    BaseCardType, ImageMagickCommands, CardDescription
 )
 from modules.Debug import log
 from modules.RemoteFile import RemoteFile
@@ -44,9 +44,9 @@ class WhiteTextBroadcast(BaseCardType):
     class CardModel(BaseCardTypeCustomFontNoText):
         title_text: str
         episode_text: str
-        hide_episode_text: bool = Field(default=False)
-        episode_text_color: str = Field(default='#FFFFFF')
-        omit_gradient: bool = Field(default=False)
+        hide_episode_text: bool = False
+        episode_text_color: str = '#FFFFFF'
+        omit_gradient: bool = False
 
         @root_validator
         def toggle_text_hiding(cls, values):
@@ -126,7 +126,7 @@ class WhiteTextBroadcast(BaseCardType):
 
         # Ensure characters that need to be escaped are
         self.title_text = self.image_magick.escape_chars(title_text)
-        self.episode_text = self.image_magick.escape_chars(episode_text.upper())
+        self.episode_text = self.image_magick.escape_chars(episode_text)
         self.hide_episode_text = hide_episode_text
 
         self.font_color = font_color

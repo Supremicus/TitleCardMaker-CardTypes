@@ -32,7 +32,9 @@
             "Intended for use in Science Fiction series."
         ],
         "example": "https://raw.githubusercontent.com/azuravian/myimages/main/SciFiTitleCard/Example1.jpg",
-        "creators": ["Azuravian"],
+        "creators": [
+            "Azuravian"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
         "supported_extras": [
@@ -118,7 +120,9 @@
             "The default Font for this card is a modified version of Helvetica."
         ],
         "example": "https://user-images.githubusercontent.com/17693271/216839561-ec4a1c27-dcdc-4869-87dd-8d592a26aee2.jpg",
-        "creators": ["CollinHeist"],
+        "creators": [
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
         "supported_extras": [],
@@ -208,7 +212,7 @@
                 "tooltip": "Either <v>True</v> or <v>False</v>. Default is <v>True</v>."
             }
         ],        
-        "hash": "e958458d8a9f14dbc955bbd810737adf"
+        "hash": "06eec75f2d32de3e2efedd88ac8c2591"
     },
     {
         "name": "White Text Broadcast",
@@ -217,11 +221,15 @@
             "Card based on Wdvh's White Text Absolute card, using the same format, but has the season number included in the episode text."
         ],
         "example": "https://user-images.githubusercontent.com/1803189/171089736-f60a6ff2-0914-432a-a45d-145323d39c42.jpg",
-        "creators": ["lyonza", "Wdvh", "CollinHeist"],
+        "creators": [
+            "lyonza",
+            "Wdvh",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
         "supported_extras": [],
-        "hash": "6fa8e2af76079d4d2601a82bef91d30f"
+        "hash": "8b514150d49b578c462c3ee4fa673a9c"
     },
     {
         "name": "Star Wars (Title Only)",
@@ -231,25 +239,14 @@
             "This card also uses a modified star gradient so that more of the left side of the image is visible."
         ],
         "example": "https://user-images.githubusercontent.com/17693271/178131539-c7b55ced-b9ba-4564-8153-a998454e1742.jpg",
-        "creators": ["Wdvh", "CollinHeist"],
+        "creators": [
+            "Wdvh",
+            "CollinHeist"
+        ],
         "supports_custom_fonts": false,
         "supports_custom_seasons": false,
         "supported_extras": [],
         "hash": "028e730b6b78fe45c06f1d4dea88f186"
-    },
-    {
-        "name": "White Text Absolute",
-        "identifier": "Wdvh/WhiteTextAbsolute",
-        "description": [
-            "Modification of the Standard card type that uses the same fonts and sizes but hides the season text and has the episode count positioned in the left top corner.",
-            "The title text is positioned even lower than the Standard card."
-        ],
-        "example": "https://user-images.githubusercontent.com/17693271/169709482-6bb023ab-4986-464e-88d6-0e05ad75d0d3.jpg",
-        "creators": ["Wdvh", "CollinHeist"],
-        "supports_custom_fonts": false,
-        "supports_custom_seasons": false,
-        "supported_extras": [],
-        "hash": "b8bba27d0ad447f4051bce0c9f6367a7"
     },
     {
         "name": "White Text Standard",
