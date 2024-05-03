@@ -2,7 +2,6 @@ from pathlib import Path
 from typing import Optional, TYPE_CHECKING
 
 from pydantic import Field, root_validator
-from app.schemas.base import BetterColor
 from app.schemas.card_type import BaseCardTypeCustomFontNoText
 
 from modules.BaseCardType import (
@@ -46,7 +45,7 @@ class WhiteTextBroadcast(BaseCardType):
         title_text: str
         episode_text: str
         hide_episode_text: bool = Field(default=False)
-        episode_text_color: BetterColor = Field(default='#FFFFFF')
+        episode_text_color: str = Field(default='#FFFFFF')
         omit_gradient: bool = Field(default=False)
 
         @root_validator
@@ -242,10 +241,7 @@ class WhiteTextBroadcast(BaseCardType):
 
 
     def create(self) -> None:
-        """
-        Make the necessary ImageMagick and system calls to create this
-        object's defined title card.
-        """
+        """Create this object's defined title card."""
 
         if self.omit_gradient:
             gradient_command = []
@@ -262,6 +258,8 @@ class WhiteTextBroadcast(BaseCardType):
             *gradient_command,
             *self.title_text_command,
             *self.index_text_command,
+            # Attempt to overlay mask
+            *self.add_overlay_mask(self.source_file),
             # Resize and write output
             *self.resize_output,
             f'"{self.output_file.resolve()}"',
