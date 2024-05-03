@@ -3,7 +3,6 @@ from typing import Literal, Optional, TYPE_CHECKING
 
 from pydantic import constr
 
-from app.schemas.base import BetterColor
 from app.schemas.card_type import BaseCardTypeCustomFontNoText
 from modules.BaseCardType import BaseCardType, CardDescription
 from modules.Debug import log
@@ -42,7 +41,7 @@ class StarWarsTitleOnly(BaseCardType):
 
     class CardModel(BaseCardTypeCustomFontNoText):
         title_text: constr(to_upper=True)
-        font_color: BetterColor = '#DAC960'
+        font_color: str = '#DAC960'
 
     """Directory where all reference files used by this card are stored"""
     REF_DIRECTORY = Path(__file__).parent.parent / 'ref' / 'star_wars'
@@ -133,10 +132,7 @@ class StarWarsTitleOnly(BaseCardType):
 
 
     def create(self) -> None:
-        """
-        Make the necessary ImageMagick and system calls to create this
-        object's defined title card.
-        """
+        """Create this object's defined title card."""
 
         command = ' '.join([
             f'convert "{self.source_file.resolve()}"',
@@ -153,6 +149,8 @@ class StarWarsTitleOnly(BaseCardType):
             f'-interline-spacing 20',
             f'-fill "{self.TITLE_COLOR}"',
             f'-annotate +320+1529 "{self.title}"',
+            # Attempt to overlay mask
+            *self.add_overlay_mask(self.source_file),
             # Resize and write output
             *self.resize_output,
             f'"{self.output_file.resolve()}"',
