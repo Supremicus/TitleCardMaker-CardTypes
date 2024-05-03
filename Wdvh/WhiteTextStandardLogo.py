@@ -56,49 +56,29 @@ class WhiteTextStandardLogo(BaseCardType):
     )
 
 
-    def __init__(self,
-            output_file: Path,
-            title: str,
+    def __init__(self, *,
+            card_file: Path,
+            title_text: str,
             season_text: str,
             episode_text: str,
-            font: str,
-            font_size: float,
-            title_color: str,
-            hide_season: bool = False,
+            hide_season_text: bool = False,
             season_number: int = 1,
             episode_number: int = 1,
-            blur: bool=False,
+            font_color: str = TITLE_COLOR,
+            font_file: str = TITLE_FONT,
+            font_kerning: float = 1.0,
+            font_interline_spacing: int = 0,
+            font_size: float = 1.0,
+            font_stroke_width: float = 1.0,
+            font_vertical_shift: int = 0,
+            blur: bool = False,
             grayscale: bool = False,
-            vertical_shift: int = 0,
-            kerning: float = 1.0,
-            interline_spacing: int = 0,
-            stroke_width: float = 1.0,
             logo: Optional[str] = None, 
             background: str = '#000000',
             separator: str = '-',
             **unused) -> None:
         """
         Initialize this CardType object.
-
-        Args:
-            output_file: Output file where to create the card.
-            title: Title text to add to created card.
-            season_text: Season text to add to created card.
-            episode_text: Episode text to add to created card.
-            font: Font name or path (as string) to use for episode title.
-            font_size: Scalar to apply to title font size.
-            season_number: Season number for the card.
-            episode_number: Episode number for the card.
-            title_color: Color to use for title text.
-            hide_season: Whether to ignore season_text.
-            separator: Character to use to separate season and episode text.
-            blur: Whether to blur the source image.
-            grayscale: Whether to make the source image grayscale.
-            vertical_shift: Pixel count to adjust the title vertical offset by.
-            interline_spacing: Pixel count to adjust title interline spacing by.
-            kerning: Scalar to apply to kerning of the title text.
-            stroke_width: Scalar to apply to black stroke of the title text.
-            kwargs: Unused arguments.
         """
         
         # Initialize the parent class - this sets up an ImageMagickInterface
@@ -107,8 +87,9 @@ class WhiteTextStandardLogo(BaseCardType):
         # Look for logo if it's a format string
         if isinstance(logo, str):
             try:
-                logo = logo.format(season_number=season_number,
-                                   episode_number=episode_number)
+                logo = logo.format(
+                    season_number=season_number, episode_number=episode_number
+                )
             except Exception:
                 pass
             
@@ -117,21 +98,22 @@ class WhiteTextStandardLogo(BaseCardType):
         else:
             self.logo = None
 
-        self.output_file = output_file
+        self.output_file = card_file
 
         # Ensure characters that need to be escaped are
-        self.title = self.image_magick.escape_chars(title)
+        self.title = self.image_magick.escape_chars(title_text)
         self.season_text = self.image_magick.escape_chars(season_text.upper())
         self.episode_text = self.image_magick.escape_chars(episode_text.upper())
+        self.hide_season = hide_season_text
 
-        self.font = font
+        self.font = font_file
         self.font_size = font_size
-        self.title_color = title_color
-        self.hide_season = hide_season
-        self.vertical_shift = vertical_shift
-        self.interline_spacing = interline_spacing
-        self.kerning = kerning
-        self.stroke_width = stroke_width
+        self.title_color = font_color
+        self.vertical_shift = font_vertical_shift
+        self.interline_spacing = font_interline_spacing
+        self.kerning = font_kerning
+        self.stroke_width = font_stroke_width
+
         self.background = background
         self.separator = separator
 
@@ -430,11 +412,12 @@ class WhiteTextStandardLogo(BaseCardType):
         """
 
         command = ' '.join([
-            f'composite',
-            f'-gravity center',
-            f'-geometry +0+690.2',
-            f'"{series_count_image.resolve()}"',
+            f'convert',
             f'"{titled_image.resolve()}"',
+            f'-gravity center',
+            f'"{series_count_image.resolve()}"',
+            f'-geometry +0+690.2',
+            f'-composite',
             *self.resize_output,
             f'"{self.output_file.resolve()}"',
         ])
@@ -457,14 +440,14 @@ class WhiteTextStandardLogo(BaseCardType):
             True if a custom font is indicated, False otherwise.
         """
 
-        return ((font.file != WhiteTextStandardLogo.TITLE_FONT)
-            or (font.size != 1.0)
-            or (font.color != WhiteTextStandardLogo.TITLE_COLOR)
-            or (font.replacements != WhiteTextStandardLogo.FONT_REPLACEMENTS)
-            or (font.vertical_shift != 0)
+        return ((font.color != WhiteTextStandardLogo.TITLE_COLOR)
+            or (font.file != WhiteTextStandardLogo.TITLE_FONT)
             or (font.interline_spacing != 0)
             or (font.kerning != 1.0)
-            or (font.stroke_width != 1.0))
+            or (font.size != 1.0)
+            or (font.stroke_width != 1.0)
+            or (font.vertical_shift != 0)
+        )
 
 
     @staticmethod

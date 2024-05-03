@@ -93,7 +93,6 @@ class StarWarsTitleOnly(BaseCardType):
 
         self.source_file = source_file
         self.output_file = card_file
-
         self.title = self.image_magick.escape_chars(title_text)
 
 

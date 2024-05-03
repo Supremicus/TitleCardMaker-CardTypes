@@ -95,7 +95,8 @@ class TitleColorMatch(BaseCardType):
         'font_stroke_width', 'font_vertical_shift', 'logo', 'omit_gradient',
     )
 
-    def __init__(self,
+
+    def __init__(self, *,
             source_file: Path,
             card_file: Path,
             logo_file: Path,
