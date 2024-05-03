@@ -2,7 +2,6 @@ from pathlib import Path
 from typing import Optional, TYPE_CHECKING
 
 from pydantic import FilePath, PositiveFloat, constr, root_validator
-from app.schemas.base import BetterColor
 from app.schemas.card_type import BaseCardModel
 
 from modules.BaseCardType import BaseCardType, CardDescription
@@ -46,7 +45,7 @@ class BlacklistTitleCard(BaseCardType):
         title_text: str
         episode_text: constr(to_upper=True)
         hide_episode_text: bool = False
-        font_color: BetterColor
+        font_color: str
         font_file: FilePath
         font_interline_spacing: int = 0
         font_size: PositiveFloat = 1.0
@@ -102,9 +101,7 @@ class BlacklistTitleCard(BaseCardType):
             preferences: Optional['Preferences'] = None,
             **unused,
         ) -> None:
-        """
-        Construct a new instance of this Card.
-        """
+        """Construct a new instance of this Card."""
 
         super().__init__(blur, grayscale, preferences=preferences)
 
@@ -168,10 +165,7 @@ class BlacklistTitleCard(BaseCardType):
 
 
     def create(self) -> None:
-        """
-        Make the necessary ImageMagick and system calls to create this
-        object's defined title card.
-        """
+        """Create this object's defined title card."""
 
         episode_text_offset = 150 + (250 * self.line_count)
         font_size = 230 * self.font_size
@@ -199,6 +193,8 @@ class BlacklistTitleCard(BaseCardType):
             f'-annotate +150+{vertical_shift} "{self.title_text}"',
             # Add episode text
             *episode_text_commands,
+            # Attempt to overlay mask
+            *self.add_overlay_mask(self.source_file),
             f'"{self.output_file.resolve()}"',
         ])
 
