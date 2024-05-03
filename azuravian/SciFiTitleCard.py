@@ -2,11 +2,10 @@ from pathlib import Path
 from typing import Optional, TYPE_CHECKING
 
 from pydantic import FilePath, PositiveFloat, constr, root_validator
-from app.schemas.base import BetterColor
 from app.schemas.card_type import BaseCardTypeCustomFontNoText
 
 from modules.BaseCardType import (
-    BaseCardType, ImageMagickCommands, Extra, CardDescription
+    BaseCardType, CardDescription, Extra, ImageMagickCommands,
 )
 from modules.Debug import log
 from modules.RemoteFile import RemoteFile
@@ -45,20 +44,20 @@ class SciFiTitleCard(BaseCardType):
         title_text: str
         episode_text: constr(to_upper=True)
         hide_episode_text: bool = False
-        font_color: BetterColor = 'white'
+        font_color: str = 'white'
         font_file: FilePath
         add_trailing_underscore: bool = True
-        overlay_bottom_color: BetterColor = 'rgb(58, 255, 255)'
-        overlay_middle_color: BetterColor = 'rgb(255, 255, 255)'
-        overlay_top_color: BetterColor = 'rgb(255, 49, 255)'
-        overlay_rectangles_color: BetterColor = 'rgb(102, 211, 122)'
+        overlay_bottom_color: str = 'rgb(58, 255, 255)'
+        overlay_middle_color: str = 'rgb(255, 255, 255)'
+        overlay_top_color: str = 'rgb(255, 49, 255)'
+        overlay_rectangles_color: str = 'rgb(102, 211, 122)'
         overlay_base_alpha: PositiveFloat = 1.0
         overlay_bottom_alpha: PositiveFloat = 0.6
         overlay_middle_alpha: PositiveFloat = 0.6
         overlay_top_alpha: PositiveFloat = 0.6
         overlay_rectangles_alpha: PositiveFloat = 0.6
-        episode_text_color: BetterColor = 'white'
-        stroke_color: BetterColor = 'black'
+        episode_text_color: str = 'white'
+        stroke_color: str = 'black'
 
         @root_validator(skip_on_failure=True, allow_reuse=True)
         def toggle_text_hiding(cls, values):
@@ -331,6 +330,8 @@ class SciFiTitleCard(BaseCardType):
             *self.title_text_command,
             # Put season/episode text
             *self.index_text_command,
+            # Attempt to overlay mask
+            *self.add_overlay_mask(self.source_file),
             # Create and resize output
             *self.resize_output,
             f'"{self.output_file.resolve()}"',
