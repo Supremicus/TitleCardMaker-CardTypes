@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from modules.Font import Font
 
 
-class TintedFramePlusTitleCard(BaseCardType):
+class TintedFramePlus(BaseCardType):
     """
     CardType that produces title cards featuring a rectangular frame
     with blurred content on the edges of the frame, and unblurred
@@ -528,17 +528,15 @@ class TintedFramePlusTitleCard(BaseCardType):
         # Generic font, reset episode text and box colors
         if not custom_font:
             if 'episode_text_color' in extras:
-                extras['episode_text_color'] =\
-                    TintedFramePlusTitleCard.EPISODE_TEXT_COLOR
+                extras['episode_text_color'] =TintedFramePlus.EPISODE_TEXT_COLOR
             if 'episode_text_font' in extras:
-                extras['episode_text_font'] =\
-                    TintedFramePlusTitleCard.EPISODE_TEXT_FONT
+                extras['episode_text_font'] = TintedFramePlus.EPISODE_TEXT_FONT
             if 'episode_text_font_size' in extras:
                 extras['episode_text_font_size'] = 1.0
             if 'episode_text_vertical_shift' in extras:
                 extras['episode_text_vertical_shift'] = 0
             if 'frame_color' in extras:
-                extras['frame_color'] = TintedFramePlusTitleCard.TITLE_COLOR
+                extras['frame_color'] = TintedFramePlus.TITLE_COLOR
 
 
     @staticmethod
@@ -554,8 +552,8 @@ class TintedFramePlusTitleCard(BaseCardType):
             True if a custom font is indicated, False otherwise.
         """
 
-        return ((font.color != TintedFramePlusTitleCard.TITLE_COLOR)
-            or (font.file != TintedFramePlusTitleCard.TITLE_FONT)
+        return ((font.color != TintedFramePlus.TITLE_COLOR)
+            or (font.file != TintedFramePlus.TITLE_FONT)
             or (font.interline_spacing != 0)
             or (font.interword_spacing != 0)
             or (font.kerning != 1.0)
@@ -602,10 +600,9 @@ class TintedFramePlusTitleCard(BaseCardType):
             True if custom season titles are indicated, False otherwise.
         """
 
-        standard_etf = TintedFramePlusTitleCard.EPISODE_TEXT_FORMAT.upper()
-
         return (custom_episode_map
-                or episode_text_format.upper() != standard_etf)
+                or episode_text_format.upper() != \
+                    TintedFramePlus.EPISODE_TEXT_FORMAT.upper())
 
 
     def create(self) -> None:
