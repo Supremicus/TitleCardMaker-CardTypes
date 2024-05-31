@@ -48,9 +48,9 @@ class StarWarsTitleOnly(BaseCardType):
 
     """Characteristics for title splitting by this class"""
     TITLE_CHARACTERISTICS = {
-        'max_line_width': 16,   # Character count to begin splitting titles
-        'max_line_count': 5,    # Maximum number of lines a title can take up
-        'top_heavy': True,      # This class uses top heavy titling
+        'max_line_width': 16,
+        'max_line_count': 5,
+        'style': 'top',
     }
 
     """How to name archive directories for this type of card"""
