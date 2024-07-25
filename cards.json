@@ -387,14 +387,14 @@
                 "tooltip": "Either <v>True</v> or <v>False</v>. Set to <v>False</v> if you have trouble reading text on brighter images.<br>Default is <v>True</v>."
             }
         ],        
-        "hash": "efbf7ba9df4c2c756883463d9041d9fd"
+        "hash": "f8dd2e3b917b651b9fa5c56609054851"
     },
     {
         "name": "Dawn",
         "identifier": "Supremicus/Horizon",
         "description": [
-            "Produce TitleCards with left or right aligned centered text with an optional symbol similar to those found on MediUX. CRT TV overlay ",
-            "for shows like Stranger Things with a retro theme."
+            "Produce TitleCards with left or right aligned centered text with an optional symbol similar to those found on MediUX.",
+            "Optional CRT TV overlay for shows like Stranger Things with a retro theme."
         ],
         "example": "https://raw.githubusercontent.com/CollinHeist/TitleCardMaker-CardTypes/web-ui/Supremicus/HorizonTitleCard.preview.jpg",
         "creators": [
@@ -406,7 +406,7 @@
             {
                 "name": "Episode Text Vertical Shift",
                 "identifier": "episode_text_vertical_shift",
-                "description": "Vertical Shift for Episode Text.",
+                "description": "Vertical Shift for Episode Text",
                 "tooltip": "Additional vertical shift to apply to the season and episode text. Default is <v>0</v>.<br> If multi-line issues, problem fonts may be fixed by fix vertical metrics at <v>https://transfonter.org/</v>."
             },
             {
