@@ -1,6 +1,5 @@
 from pathlib import Path
 from typing import TYPE_CHECKING, Optional, Literal
-from pydantic import FilePath
 
 from app.schemas.card_type import BaseCardTypeCustomFontAllText
 
@@ -20,18 +19,17 @@ if TYPE_CHECKING:
 class HorizonTitleCard(BaseCardType):
     """
     CardType that produces title cards similar to the left or right
-    aligned with vertically centered text with optional symbol
-    similar to the custom cards found on MediUX. CRT TV overlay
-    (nobezel or bezel) with optional watched style based on
-    Yozora's Retro title card for shows like Stranger Things with a
-    retro theme.
+    aligned with vertically centered text with optional symbol similar
+    to the custom cards found on MediUX. CRT TV overlay (nobezel or
+    bezel) with optional watched style based on Yozora's Retro title
+    card for shows like Stranger Things with a retro theme.
     """
 
     """API Parameters"""
     API_DETAILS = CardDescription(
         name='Horizon',
         identifier='Supremicus/Horizon',
-        example='https://raw.githubusercontent.com/Supremicus/tcm-images/main/Preview%20Cards/HorizonTitleCard.preview.jpg',
+        example='https://raw.githubusercontent.com/CollinHeist/TitleCardMaker-CardTypes/web-ui/Supremicus/HorizonTitleCard.preview.jpg',
         creators=['Supremicus'],
         source='remote',
         supports_custom_fonts=True,
@@ -42,9 +40,10 @@ class HorizonTitleCard(BaseCardType):
                 identifier='episode_text_vertical_shift',
                 description='Vertical Shift for Episode Text.',
                 tooltip=(
-                    'Additional vertical shift to apply to the season and episode text. '
-                    'Default is <v>0</v>.<br> If multi-line issues, problem fonts may'
-                    'be fixed by <v>Fix vertical metrics</v> at <v>https://transfonter.org/</v>'
+                    'Additional vertical shift to apply to the season and '
+                    'episode text. Default is <v>0</v>.<br> If multi-line '
+                    'issues, problem fonts may be fixed by fix vertical '
+                    'metrics at <v>https://transfonter.org/</v>.'
                 ),
             ),
             Extra(
@@ -63,16 +62,20 @@ class HorizonTitleCard(BaseCardType):
                 name='Horizontal Alignment',
                 identifier='h_align',
                 description='Horizontal alignment of the text and symbol',
-                tooltip='Either <v>left</v> or <v>right</v>. Default is <v>left</v>.'
+                tooltip=(
+                    'Either <v>left</v> or <v>right</v>. Default is '
+                    '<v>left</v>.'
+                )
             ),
             Extra(
                 name='Symbol',
                 identifier='symbol',
                 description='Add a custom symbol behind the text',
                 tooltip=(
-                    'Either <v>acolyte</v>, <v>ahsoka</v>, <v>andor</v>, <v>bobafett<v>, '
-                    '<v>mandalorian</v>, <v>obiwan</v>, or <v>witcher</v> to use a built-in '
-                    'symbol, or <v>logo</v> to use the Series logo.'
+                    'Either <v>acolyte</v>, <v>ahsoka</v>, <v>andor</v>, '
+                    '<v>bobafett<v>, <v>mandalorian</v>, <v>obiwan</v>, or '
+                    '<v>witcher</v> to use a built-in symbol, or <v>logo</v> '
+                    'to use the Series logo.'
                 ),
             ),
             Extra(
@@ -80,7 +83,8 @@ class HorizonTitleCard(BaseCardType):
                 identifier='crt_overlay',
                 description='CRT TV Overlay Toggle',
                 tooltip=(
-                    'Either <v>nobezel</v> or <v>bezel</v>. Default is <v>None</v>.'
+                    'Either <v>nobezel</v> or <v>bezel</v>. Default is '
+                    '<v>None</v>.'
                 ),
             ),
             Extra(
@@ -88,9 +92,10 @@ class HorizonTitleCard(BaseCardType):
                 identifier='crt_state_overlay',
                 description='CRT TV Overlay Watched-Status Toggle',
                 tooltip=(
-                    'Whether to change the CRT overlay with the watched status of the Episode. '
-                    'Either <v>True</v> or <v>False</v>. Default is <v>False</v>. '
-                    'Will only work if the CRT TV Overlay Toggle is enabled.'
+                    'Whether to change the CRT overlay with the watched status '
+                    'of the Episode. Either <v>True</v> or <v>False</v>. '
+                    'Default is <v>False</v>. Will only work if the CRT TV '
+                    'Overlay Toggle is enabled.'
                 ),
             ),
             Extra(
@@ -98,8 +103,9 @@ class HorizonTitleCard(BaseCardType):
                 identifier='omit_gradient',
                 description='Whether to omit the gradient overlay',
                 tooltip=(
-                    'Either <v>True</v> or <v>False</v>. Set to <v>False</v> if you have '
-                    'trouble reading text on brighter images.<br>Default is <v>True</v>.'
+                    'Either <v>True</v> or <v>False</v>. Set to <v>False</v> '
+                    'if you have trouble reading text on brighter images. '
+                    'Default is <v>True</v>.'
                 ),
             ),
             Extra(
@@ -107,17 +113,18 @@ class HorizonTitleCard(BaseCardType):
                 identifier='alignment_overlay',
                 description='Alignment Overlay Toggle',
                 tooltip=(
-                    'Enable an alignment overlay to help assist adjusting offsets for '
-                    'misaligned custom fonts. The overlay has guiding lines every 10 pixels '.
-                    'Either <v>True</v> or <v>False</v>. Default is <v>False</v>.'
+                    'Enable an alignment overlay to help assist adjusting '
+                    'offsets for misaligned custom fonts. The overlay has '
+                    'guiding lines every 10 pixels. Either <v>True</v> or '
+                    '<v>False</v>. Default is <v>False</v>.'
                 ),
             ),
         ],
         description=[
-            "Produce TitleCards with left or right aligned centered text with ",
-            "an optional symbol similar to those found on MediUX. CRT TV overlay ",
-            "for shows like Stranger Things with a retro theme.",
-        ]
+            'Produce TitleCards with left or right aligned centered text with '
+            'an optional symbol similar to those found on MediUX. CRT TV '
+            'overlay for shows like Stranger Things with a retro theme.'
+        ],
     )
 
     class CardModel(BaseCardTypeCustomFontAllText):
@@ -126,7 +133,7 @@ class HorizonTitleCard(BaseCardType):
         separator: str = '•'
         h_align: Literal['left', 'right'] = 'left'
         symbol: Optional[str] = None
-        logo_file: FilePath
+        logo_file: Path
         alignment_overlay: bool = False
         crt_overlay: str = None
         crt_state_overlay: bool = False
@@ -273,12 +280,6 @@ class HorizonTitleCard(BaseCardType):
         else:
             index_text = f'{self.season_text} {self.separator} {self.episode_text}'
 
-        # Horizontal Alignment
-        if self.h_align == 'left':
-            x = -700
-        else:
-            x = 700
-
         # Font customizations
         stroke_width = 4.0 * self.font_stroke_width
 
@@ -296,6 +297,7 @@ class HorizonTitleCard(BaseCardType):
         # Text offsets
         offset = (124 * self.font_size / 2) * self.line_count
         y = 900 - offset + self.episode_text_vertical_shift - 30
+        x = -700 if self.h_align == 'left' else 700
 
         return [
             *base_commands,
@@ -317,22 +319,19 @@ class HorizonTitleCard(BaseCardType):
         if not self.title_text:
             return []
 
-        # Horizontal Alignment
-        if self.h_align == 'left':
-            x = -700
-        else:
-            x = 700
-
         font_size = 124 * self.font_size
         offset = (font_size / 2) * self.line_count
         vertical_shift = 42 + self.font_vertical_shift
+        x = -700 if self.h_align == 'left' else 700
         y = 900 - offset + vertical_shift - 12
 
         return [
             *self.title_text_global_effects,
             *self.title_text_black_stroke,
             f'-annotate {x:+}{y:+} "{self.title_text}"',
-            *self.title_text_effects,
+            f'-fill "{self.font_color}"',
+            f'-stroke "{self.font_color}"',
+            f'-strokewidth 0',
             f'-annotate {x:+}{y:+} "{self.title_text}"',
         ]
 
@@ -345,13 +344,6 @@ class HorizonTitleCard(BaseCardType):
         southwest gravity.
         """
 
-        # Horizontal Alignment
-        if self.h_align == 'left':
-            x = -700
-        else:
-            x = 700
-
-        # Font customizations
         font_size = 124 * self.font_size
         interline_spacing = -26 + self.font_interline_spacing
         interword_spacing = 50 + self.font_interword_spacing
@@ -387,51 +379,24 @@ class HorizonTitleCard(BaseCardType):
 
 
     @property
-    def title_text_effects(self) -> ImageMagickCommands:
-        """Subcommands to implement the title text's standard effects."""
-
-        return [
-            f'-fill "{self.font_color}"',
-            f'-stroke "{self.font_color}"',
-            f'-strokewidth 0',
-        ]
-
-
-    @property
     def add_symbol_image_commands(self) -> ImageMagickCommands:
         """Add the static gradient to this object's source image."""
 
-        symbols = ['acolyte', 'ahsoka', 'andor', 'bobafett', 'logo', 'mandalorian', 'obiwan', 'witcher']
-
-        if self.symbol is None or self.symbol not in symbols:
+        SYMBOLS = {
+            'acolyte': self.__SYMBOL_IMAGE_ACOLYTE,
+            'ahsoka': self.__SYMBOL_IMAGE_AHSOKA,
+            'andor': self.__SYMBOL_IMAGE_ANDOR,
+            'bobafett': self.__SYMBOL_IMAGE_BOBAFETT,
+            'mandalorian': self.__SYMBOL_IMAGE_MANDALORIAN,
+            'obiwan': self.__SYMBOL_IMAGE_OBIWAN,
+            'witcher': self.__SYMBOL_IMAGE_WITCHER,
+            'logo': self.logo,
+        }
+        symbol_image: Optional[Path] = SYMBOLS.get(self.symbol)
+        if not symbol_image or not symbol_image.exists():
             return []
 
-        if (self.symbol == 'logo' and not self.logo.exists()):
-            return []
-
-        # Add symbol image
-        if self.symbol == 'acolyte':
-            symbol_image = self.__SYMBOL_IMAGE_ACOLYTE
-        elif self.symbol == 'ahsoka':
-            symbol_image = self.__SYMBOL_IMAGE_AHSOKA
-        elif self.symbol == 'andor':
-            symbol_image = self.__SYMBOL_IMAGE_ANDOR
-        elif self.symbol == 'bobafett':
-            symbol_image = self.__SYMBOL_IMAGE_BOBAFETT
-        elif self.symbol == 'mandalorian':
-            symbol_image = self.__SYMBOL_IMAGE_MANDALORIAN
-        elif self.symbol == 'obiwan':
-            symbol_image = self.__SYMBOL_IMAGE_OBIWAN
-        elif self.symbol == 'witcher':
-            symbol_image = self.__SYMBOL_IMAGE_WITCHER
-        elif self.symbol == 'logo':
-            symbol_image = self.logo
-
-        # Horizontal Alignment
-        if self.h_align == 'left':
-            x = -700
-        else:
-            x = 700
+        x = -700 if self.h_align == 'left' else 700
 
         return [
             f'-gravity center',
@@ -483,10 +448,7 @@ class HorizonTitleCard(BaseCardType):
         if self.omit_gradient:
             return []
 
-        if self.h_align == 'left':
-            rotation = 0
-        else:
-            rotation = 180
+        rotation = 0 if self.h_align == 'left' else 180
 
         return [
             f'\( "{self.__GRADIENT_IMAGE.resolve()}"',
@@ -575,10 +537,9 @@ class HorizonTitleCard(BaseCardType):
             True if custom season titles are indicated, False otherwise.
         """
 
-        standard_etf = HorizonTitleCard.EPISODE_TEXT_FORMAT.upper()
-
         return (custom_episode_map
-                or episode_text_format.upper() != standard_etf)
+                or episode_text_format.upper() != \
+                    HorizonTitleCard.EPISODE_TEXT_FORMAT.upper())
 
 
     @staticmethod

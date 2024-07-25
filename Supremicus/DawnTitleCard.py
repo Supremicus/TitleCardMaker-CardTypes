@@ -28,7 +28,7 @@ class DawnTitleCard(BaseCardType):
     API_DETAILS = CardDescription(
         name='Dawn',
         identifier='Supremicus/Dawn',
-        example='https://raw.githubusercontent.com/Supremicus/tcm-images/main/Preview%20Cards/DawnTitleCard.preview.jpg',
+        example='https://raw.githubusercontent.com/CollinHeist/TitleCardMaker-CardTypes/web-ui/Supremicus/DawnTitleCard.preview.jpg',
         creators=['Supremicus'],
         source='remote',
         supports_custom_fonts=True,
@@ -100,8 +100,9 @@ class DawnTitleCard(BaseCardType):
             ),
         ],
         description=[
-            "Produce TitleCards with left, centered or right aligned text on the bottom.",
-            "Optional CRT TV overlay for shows like Stranger Things with a retro theme.",
+            'Produce TitleCards with left, centered or right aligned text on '
+            'the bottom.', 'Optional CRT TV overlay for shows like Stranger '
+            'Things with a retro theme.',
         ]
     )
 
