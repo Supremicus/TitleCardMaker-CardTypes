@@ -390,8 +390,8 @@
         "hash": "f8dd2e3b917b651b9fa5c56609054851"
     },
     {
-        "name": "Dawn",
-        "identifier": "Supremicus/Horizon",
+        "name": "Horizon",
+        "identifier": "Supremicus/HorizonTitleCard",
         "description": [
             "Produce TitleCards with left or right aligned centered text with an optional symbol similar to those found on MediUX.",
             "Optional CRT TV overlay for shows like Stranger Things with a retro theme."
