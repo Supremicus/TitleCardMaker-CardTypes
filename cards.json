@@ -403,62 +403,60 @@
         "supports_custom_fonts": true,
         "supports_custom_seasons": true,
         "supported_extras": [
-            [
-                {
-                    "name": "Episode Text Vertical Shift",
-                    "identifier": "episode_text_vertical_shift",
-                    "description": "Vertical Shift for Episode Text.",
-                    "tooltip": "Additional vertical shift to apply to the season and episode text. Default is <v>0</v>.<br> If multi-line issues, problem fonts may be fixed by fix vertical metrics at <v>https://transfonter.org/</v>."
-                },
-                {
-                    "name": "Stroke Text Color",
-                    "identifier": "stroke_color",
-                    "description": "Color to use for the episode & title text stroke",
-                    "tooltip": "Default is <c>black</c>."
-                },
-                {
-                    "name": "Separator Character",
-                    "identifier": "separator",
-                    "description": "Character to separate season and episode text",
-                    "tooltip": "Default is <v>•</v>."
-                },
-                {
-                    "name": "Horizontal Alignment",
-                    "identifier": "h_align",
-                    "description": "Horizontal alignment of the text and symbol",
-                    "tooltip": "Either <v>left</v> or <v>right</v>. Default is <v>left</v>."
-                },
-                {
-                    "name": "Symbol",
-                    "identifier": "symbol",
-                    "description": "Add a custom symbol behind the text",
-                    "tooltip": "Either <v>acolyte</v>, <v>ahsoka</v>, <v>andor</v>, <v>bobafett<v>, <v>mandalorian</v>, <v>obiwan</v>, or <v>witcher</v> to use a built-in symbol, or <v>logo</v> to use the Series logo."
-                },
-                {
-                    "name": "CRT TV Overlay",
-                    "identifier": "crt_overlay",
-                    "description": "CRT TV Overlay Toggle",
-                    "tooltip": "Either <v>nobezel</v> or <v>bezel</v>. Default is <v>None</v>."
-                },
-                {
-                    "name": "CRT TV Watched/Unwatched Overlay",
-                    "identifier": "crt_state_overlay",
-                    "description": "CRT TV Overlay Watched-Status Toggle",
-                    "tooltip": "Whether to change the CRT overlay with the watched status of the Episode. Either <v>True</v> or <v>False</v>. Default is <v>False</v>. Will only work if the CRT TV Overlay Toggle is enabled."
-                },
-                {
-                    "name": "Gradient Omission",
-                    "identifier": "omit_gradient",
-                    "description": "Whether to omit the gradient overlay",
-                    "tooltip": "Either <v>True</v> or <v>False</v>. Set to <v>False</v> if you have trouble reading text on brighter images. Default is <v>True</v>."
-                },
-                {
-                    "name": "Alignment Overlay",
-                    "identifier": "alignment_overlay",
-                    "description": "Alignment Overlay Toggle",
-                    "tooltip": "Enable an alignment overlay to help assist adjusting offsets for misaligned custom fonts. The overlay has guiding lines every 10 pixels. Either <v>True</v> or <v>False</v>. Default is <v>False</v>."
-                }
-            ]            
+            {
+                "name": "Episode Text Vertical Shift",
+                "identifier": "episode_text_vertical_shift",
+                "description": "Vertical Shift for Episode Text.",
+                "tooltip": "Additional vertical shift to apply to the season and episode text. Default is <v>0</v>.<br> If multi-line issues, problem fonts may be fixed by fix vertical metrics at <v>https://transfonter.org/</v>."
+            },
+            {
+                "name": "Stroke Text Color",
+                "identifier": "stroke_color",
+                "description": "Color to use for the episode & title text stroke",
+                "tooltip": "Default is <c>black</c>."
+            },
+            {
+                "name": "Separator Character",
+                "identifier": "separator",
+                "description": "Character to separate season and episode text",
+                "tooltip": "Default is <v>•</v>."
+            },
+            {
+                "name": "Horizontal Alignment",
+                "identifier": "h_align",
+                "description": "Horizontal alignment of the text and symbol",
+                "tooltip": "Either <v>left</v> or <v>right</v>. Default is <v>left</v>."
+            },
+            {
+                "name": "Symbol",
+                "identifier": "symbol",
+                "description": "Add a custom symbol behind the text",
+                "tooltip": "Either <v>acolyte</v>, <v>ahsoka</v>, <v>andor</v>, <v>bobafett<v>, <v>mandalorian</v>, <v>obiwan</v>, or <v>witcher</v> to use a built-in symbol, or <v>logo</v> to use the Series logo."
+            },
+            {
+                "name": "CRT TV Overlay",
+                "identifier": "crt_overlay",
+                "description": "CRT TV Overlay Toggle",
+                "tooltip": "Either <v>nobezel</v> or <v>bezel</v>. Default is <v>None</v>."
+            },
+            {
+                "name": "CRT TV Watched/Unwatched Overlay",
+                "identifier": "crt_state_overlay",
+                "description": "CRT TV Overlay Watched-Status Toggle",
+                "tooltip": "Whether to change the CRT overlay with the watched status of the Episode. Either <v>True</v> or <v>False</v>. Default is <v>False</v>. Will only work if the CRT TV Overlay Toggle is enabled."
+            },
+            {
+                "name": "Gradient Omission",
+                "identifier": "omit_gradient",
+                "description": "Whether to omit the gradient overlay",
+                "tooltip": "Either <v>True</v> or <v>False</v>. Set to <v>False</v> if you have trouble reading text on brighter images. Default is <v>True</v>."
+            },
+            {
+                "name": "Alignment Overlay",
+                "identifier": "alignment_overlay",
+                "description": "Alignment Overlay Toggle",
+                "tooltip": "Enable an alignment overlay to help assist adjusting offsets for misaligned custom fonts. The overlay has guiding lines every 10 pixels. Either <v>True</v> or <v>False</v>. Default is <v>False</v>."
+            }            
         ],        
         "hash": "d3dec2bf026d7266652cd9fd33e72be3"
     }
