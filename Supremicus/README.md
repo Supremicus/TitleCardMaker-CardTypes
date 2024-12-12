@@ -8,9 +8,14 @@ Below is a table of all valid series [extras](https://github.com/CollinHeist/Tit
 
 | Label | Default Value | Description |
 | :---: | :---: | :--- |
-| `episode_text_vertical_shift` | `0` | How many pixels to vertically shift the episode text |
-| `title_text_horizontal_shift` | `0` | How many pixels to horizontally shift the title text |
 | `stroke_color` | `black` | Stroke color of episode and title text |
+| `title_text_horizontal_shift` | `0` | How many pixels to horizontally shift the title text |
+| `episode_text_vertical_shift` | `0` | How many pixels to vertically shift the episode text |
+| `episode_text_font` | `Default` | Font file to use for the episode text |
+| `episode_text_font_size` | `1.0` | Scalar of the size of the episode text |
+| `episode_text_color` | `None` | Color to use separately for the episode text |
+| `episode_text_stroke_color` | `None` | Color to use separately for the episode text stroke |
+| `episode_text_kerning` | `18` | Pixel spacing between characters for the episode text |
 | `separator` | `•` | Character to separate the season and episode text |
 | `h_align` | `left` | Horizontal alignment. `left`, `center` or `right` |
 | `crt_overlay` | `None` | Enable CRT TV Overlay `none`, `nobezel` or `bezel` |
@@ -38,8 +43,13 @@ Below is a table of all valid series [extras](https://github.com/CollinHeist/Tit
 
 | Label | Default Value | Description |
 | :---: | :---: | :--- |
-| `episode_text_vertical_shift` | `0` | How many pixels to vertically shift the episode text |
 | `stroke_color` | `black` | Stroke color of episode and title text |
+| `episode_text_vertical_shift` | `0` | How many pixels to vertically shift the episode text |
+| `episode_text_font` | `Default` | Font file to use for the episode text |
+| `episode_text_font_size` | `1.0` | Scalar of the size of the episode text |
+| `episode_text_color` | `None` | Color to use separately for the episode text |
+| `episode_text_stroke_color` | `None` | Color to use separately for the episode text stroke |
+| `episode_text_kerning` | `18` | Pixel spacing between characters for the episode text |
 | `separator` | `•` | Character to separate the season and episode text |
 | `h_align` | `left` | Horizontal alignment. `left` or `right` |
 | `symbol` | `None` | Custom symbol to use<br>Built-in: `acolyte`, `ahsoka`, `andor`, `bobafett`, `mandalorian`, `obiwan`, `witcher`<br>Custom: `logo` uses *source/show/logo.png* |
