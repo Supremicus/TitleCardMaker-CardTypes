@@ -34,6 +34,7 @@ In order to contribute your own custom Card Type to this repository, follow thes
 | KHthe8th | `KHthe8th/TintedFramePlus` | <img src="https://github.com/khthe8th/TitleCardMaker-CardTypes/assets/5308389/d089a1b1-7458-4eaf-ad8d-59c7f332a7c1" height="200"/> |
 | Supremicus | `Supremicus/Dawn` | <img src="https://raw.githubusercontent.com/Supremicus/tcm-images/main/Preview%20Cards/DawnTitleCard.preview.jpg" height="200"/> |
 | Supremicus | `Supremicus/Horizon` | <img src="https://raw.githubusercontent.com/Supremicus/tcm-images/main/Preview%20Cards/HorizonTitleCard.preview.jpg" height="200"/> |
+| Supremicus | `Supremicus/SkeletonCrew` | <img src="https://raw.githubusercontent.com/Supremicus/tcm-images/main/Preview%20Cards/SkeletonCrewTitleCard.preview.jpg" height="200"/> |
 
 # Using a Custom Card Type
 The [available card types](#available-card-types) can all be specified within the Maker by adding the following:

@@ -73,3 +73,20 @@ Below is a table of all valid series [extras](https://github.com/CollinHeist/Tit
 <img src="https://raw.githubusercontent.com/Supremicus/tcm-images/main/Preview%20Cards/horizon-setup.jpg" width="1000"/>
 
 [12 Monkeys (2015) Example Logo](https://raw.githubusercontent.com/Supremicus/tcm-images/main/source/12%20Monkeys%20(2015)/logo.png)
+
+<br>
+
+# SkeletonCrewTitleCard
+## Description
+This is a custom CardType intended for the "Star Wars : Skeleton Crew" television series with matching custom fonts to create the shows text and borders just like the shows logo.
+
+## Specification
+Below is a table of all valid series [extras](https://github.com/CollinHeist/TitleCardMaker/wiki/Series-YAML-Files#extras) parsed by this card.
+
+| Label | Default Value | Description |
+| :---: | :---: | :--- |
+| `episode_text_color` | `transparent` | Color to use for the episode text |
+| `vertical_position` | `bottom` | Vertical position of all text `top`, `center`, `bottom` or `random`|
+
+## Example Card
+<img src="https://raw.githubusercontent.com/Supremicus/tcm-images/main/Preview%20Cards/SkeletonCrewTitleCard.preview.jpg" width="1000"/>
