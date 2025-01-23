@@ -22,7 +22,7 @@
                 "tooltip": "Either <v>True</v> or <v>False</v>. Default is <v>False</v>."
             }
         ],
-        "hash": "05d95c9ba644cbce18846545449dd485"
+        "hash": "bfb1d1c931dd7c8cc443151d1c6cc2c9"
     },
     {
         "name": "SciFi",
@@ -322,7 +322,7 @@
                 "tooltip": "Either <v>True</v> or <v>False</v>. If <v>True</v>, text may appear less legible on brighter images."
             }
         ],
-        "hash": "a51072ffafaf8b6201c2b5516e202697"
+        "hash": "b34bbbc2fc9b6f3f50b722457f29ebdd"
     },
     {
         "name": "Dawn",
