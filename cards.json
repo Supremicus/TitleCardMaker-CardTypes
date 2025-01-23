@@ -229,7 +229,7 @@
         "supports_custom_fonts": true,
         "supports_custom_seasons": false,
         "supported_extras": [],
-        "hash": "ae196409888f1d3a7ba76bb45549f160"
+        "hash": "ea8c4014edf6e65970e53cc13a078399"
     },
     {
         "name": "Star Wars (Title Only)",
@@ -269,7 +269,7 @@
                 "description": "Character to separate the season and episode text"
             }
         ],
-        "hash": "e1074d795f905703dce9e221d0dd1415"
+        "hash": "c4c76cd6674a0e25dca78e2b4b862ee6"
     },
     {
         "name": "Retro",
