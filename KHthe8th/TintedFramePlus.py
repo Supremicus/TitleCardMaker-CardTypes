@@ -377,7 +377,7 @@ class TintedFramePlus(BaseCardType):
         # Element is index text
         if self.top_element == 'index':
             element_width, _ = self.image_magick.get_text_dimensions(
-                self.index_text_commands, width='max', height='max',
+                self.index_text_commands,
             )
             margin = 25
         # Element is logo
@@ -443,7 +443,7 @@ class TintedFramePlus(BaseCardType):
         # Element is index text
         if self.bottom_element == 'index':
             element_width, _ = self.image_magick.get_text_dimensions(
-                self.index_text_commands, width='max', height='max',
+                self.index_text_commands,
             )
             margin = 25
         # Element is logo
