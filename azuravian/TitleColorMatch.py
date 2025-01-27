@@ -289,7 +289,7 @@ class TitleColorMatch(BaseCardType):
             return hexcolor, 'black' if luminance > 50 else 'white'
 
         # No valid colors identified, return defaults
-        return self.TITLE_COLOR, 'black'
+        return '#EBEBEB', 'black'
 
     
     @property
